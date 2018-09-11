@@ -1,9 +1,10 @@
 package db;
 
+import db.mongodb.MongoDBConnection;
 import db.msql.MySQLConnection;
 
 public class DBConnectionFactory {
-	private static final String DEFAULT_DB = "mysql";
+	private static final String DEFAULT_DB = "mongodb";
 	
 	public static DBConnection getConnection(String db) {
 		switch(db) {
@@ -11,7 +12,7 @@ public class DBConnectionFactory {
 			return new MySQLConnection();
 		case "mongodb":
 			//return new MongoDBConnection();
-			return null;
+			return new MongoDBConnection();
 		default:
 			throw new IllegalArgumentException("Invalid db: " + db);	
 		}
